@@ -1,16 +1,38 @@
-# This is a sample Python script.
+# ID, название сорта, степень обжарки, молотый/в зернах, описание вкуса, цена, объем упаковки
+import sqlite3
+import sys
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from PyQt5 import uic, QtWidgets, QtGui
+from PyQt5.QtWidgets import *
 
 
-# Press the green button in the gutter to run the script.
+def get_base():
+    con = sqlite3.connect('data.sqlite')
+    sql = con.cursor()
+    result = sql.execute("""""").fetchall()
+    con.close()
+    return result
+
+
+class MyWidget(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('main.ui', self)
+        # ID, название сорта, степень обжарки, молотый/в зернах, описание вкуса, цена, объем упаковки
+        self.headers = ["ID", "Название",  "Степень обжарки", "Состояние", "Вкус", "Цена", 'Объем']
+        self.table.setColumnCount(len(self.headers))
+        self.table.setHorizontalHeaderLabels(self.headers)
+        self.table.horizontalHeader().setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+        data = get_base()
+        if data:
+            for row, line in enumerate(data):
+                self.table.insertRow(row)
+                for ind, sell in enumerate(line):
+                    self.table.setItem(row, ind, QTableWidgetItem(f'{sell}'))
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    app = QApplication(sys.argv)
+    ex = MyWidget()
+    ex.show()
+    sys.exit(app.exec_())
