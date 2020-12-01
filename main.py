@@ -2,7 +2,7 @@
 import sqlite3
 import sys
 
-from PyQt5 import uic, QtWidgets, QtGui
+from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import *
 
 
