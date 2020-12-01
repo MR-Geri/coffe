@@ -26,7 +26,7 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="13" parent="6" name="variety ">
+    <column id="13" parent="6" name="variety">
       <Position>2</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
@@ -67,7 +67,7 @@
       <UnderlyingIndexName>coffee_id_uindex</UnderlyingIndexName>
     </key>
     <foreign-key id="21" parent="6">
-      <ColNames>variety </ColNames>
+      <ColNames>variety</ColNames>
       <RefTableName>varietys</RefTableName>
       <RefKeyName>varietys_pk</RefKeyName>
       <RefColNames>id</RefColNames>
@@ -90,80 +90,85 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <index id="25" parent="7" name="condition_id_uindex">
+    <column id="25" parent="7" name="title">
+      <Position>2</Position>
+      <DataType>STRING|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="26" parent="7" name="condition_id_uindex">
       <ColNames>id</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="26" parent="7" name="condition_pk">
+    <key id="27" parent="7" name="condition_pk">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>condition_id_uindex</UnderlyingIndexName>
     </key>
-    <column id="27" parent="8" name="id">
+    <column id="28" parent="8" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="28" parent="8" name="title">
+    <column id="29" parent="8" name="title">
       <Position>2</Position>
       <DataType>STRING|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="29" parent="8" name="degree_roasting_id_uindex">
+    <index id="30" parent="8" name="degree_roasting_id_uindex">
       <ColNames>id</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="30" parent="8" name="degree_roasting_pk">
+    <key id="31" parent="8" name="degree_roasting_pk">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>degree_roasting_id_uindex</UnderlyingIndexName>
     </key>
-    <column id="31" parent="9" name="type">
+    <column id="32" parent="9" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="32" parent="9" name="name">
+    <column id="33" parent="9" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="33" parent="9" name="tbl_name">
+    <column id="34" parent="9" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="34" parent="9" name="rootpage">
+    <column id="35" parent="9" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="35" parent="9" name="sql">
+    <column id="36" parent="9" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="36" parent="10" name="name">
+    <column id="37" parent="10" name="name">
       <Position>1</Position>
     </column>
-    <column id="37" parent="10" name="seq">
+    <column id="38" parent="10" name="seq">
       <Position>2</Position>
     </column>
-    <column id="38" parent="11" name="id">
+    <column id="39" parent="11" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="39" parent="11" name="title">
+    <column id="40" parent="11" name="title">
       <Position>2</Position>
       <DataType>STRING|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="40" parent="11" name="varietys_id_uindex">
+    <index id="41" parent="11" name="varietys_id_uindex">
       <ColNames>id</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="41" parent="11" name="varietys_pk">
+    <key id="42" parent="11" name="varietys_pk">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>varietys_id_uindex</UnderlyingIndexName>

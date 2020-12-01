@@ -9,7 +9,9 @@ from PyQt5.QtWidgets import *
 def get_base():
     con = sqlite3.connect('data.sqlite')
     sql = con.cursor()
-    result = sql.execute("""""").fetchall()
+    result = sql.execute("""SELECT cof.id, v.title, d.title, c.title, cof.description, cof.price, cof.volume FROM 
+    coffee cof, conditions c, degree_roasting d, varietys v 
+    WHERE cof.variety = v.id AND cof.condition = c.id AND cof.degree_roasting = d.id""").fetchall()
     con.close()
     return result
 
