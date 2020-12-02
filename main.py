@@ -28,7 +28,7 @@ class MyWidget(QMainWindow):
         if data:
             for line in data:
                 card = WidgetCoffeeCard(*line)
-                card.button_edit.clicked.connect(lambda state, id_=line[0]: self.edit_coffe(id_))
+                card.button_edit.clicked.connect(lambda state, id_=line[0]: self.edit_coffee(id_))
                 #
                 list_card = QListWidgetItem(self.cards)
                 list_card.setSizeHint(card.sizeHint())
@@ -36,7 +36,7 @@ class MyWidget(QMainWindow):
                 self.cards.setItemWidget(list_card, card)
         self.gridLayout.addLayout(layout, 0, 0)
 
-    def edit_coffe(self, id_: int) -> None:
+    def edit_coffee(self, id_: int) -> None:
         dialog = AddEditCoffee(*get_base_data("""SELECT * FROM coffee WHERE id = ?""", (id_,))[0], False)
         if dialog.exec_() == QDialog.Accepted:
             self.update_()
