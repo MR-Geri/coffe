@@ -1,8 +1,8 @@
 import sys
 
-from PyQt5 import uic
 from PyQt5.QtWidgets import *
 
+import UI.main
 from base import get_all_base, get_base_data
 from card import WidgetCoffeeCard
 from form_add_coffee import AddEditCoffee
@@ -11,18 +11,17 @@ from form_add_coffee import AddEditCoffee
 class MyWidget(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
-        uic.loadUi('main.ui', self)
+        self.ui = UI.main.Ui_Form()
+        self.ui.setupUi(self)
         # ID, название сорта, степень обжарки, молотый/в зернах, описание вкуса, цена, объем упаковки
-        self.update_()
         self.menuBar = self.menuBar()
         action = QAction('Добавить', self)
         action.triggered.connect(self.add_coffee)
         self.menuBar.addAction(action)
+        self.update_()
 
     def update_(self):
-        layout = QGridLayout()
         self.cards = QListWidget()
-        layout.addWidget(self.cards)
         data = get_all_base()
         if data:
             for line in data:
@@ -33,7 +32,7 @@ class MyWidget(QMainWindow):
                 list_card.setSizeHint(card.sizeHint())
                 self.cards.addItem(list_card)
                 self.cards.setItemWidget(list_card, card)
-        self.gridLayout.addLayout(layout, 0, 0)
+        self.setCentralWidget(self.cards)
 
     def edit_coffee(self, id_: int) -> None:
         dialog = AddEditCoffee(*get_base_data("""SELECT * FROM coffee WHERE id = ?""", (id_,))[0], False)
