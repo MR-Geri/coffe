@@ -11,3 +11,7 @@ B
 form_add_coffee.py,4\5\4545f2180464ce0ccaeb8bfdaf5182f8cec1daff
 7
 card.py,4\3\43244f55ee68b765e7025b19f6a8f535d4cb5c54
+L
+.idea/dictionaries/ilyak.xml,4\d\4d3a6f4d15191c1ebee13d00cc478c88864868a0
+^
+..idea/inspectionProfiles/profiles_settings.xml,1\e\1e9075f5bf079c01ef2c910709e91a497d262080

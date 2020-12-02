@@ -1,7 +1,6 @@
-import sqlite3
 import sys
 
-from PyQt5 import uic, QtWidgets
+from PyQt5 import uic
 from PyQt5.QtWidgets import *
 
 from base import get_all_base, get_base_data
