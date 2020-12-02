@@ -4,18 +4,9 @@ import sys
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import *
 
+from base import get_all_base, get_base_data
 from card import WidgetCoffeeCard
 from form_add_coffee import AddEditCoffee
-
-
-def get_base() -> list:
-    con = sqlite3.connect('data.sqlite')
-    sql = con.cursor()
-    result = sql.execute("""SELECT cof.id, v.title, d.title, c.title, cof.description, cof.price, cof.volume FROM 
-    coffee cof, conditions c, degree_roasting d, varietys v 
-    WHERE cof.variety = v.id AND cof.condition = c.id AND cof.degree_roasting = d.id""").fetchall()
-    con.close()
-    return result
 
 
 class MyWidget(QMainWindow):
@@ -23,22 +14,39 @@ class MyWidget(QMainWindow):
         super().__init__()
         uic.loadUi('main.ui', self)
         # ID, название сорта, степень обжарки, молотый/в зернах, описание вкуса, цена, объем упаковки
-        data = get_base()
+        self.update_()
+        self.menuBar = self.menuBar()
+        action = QAction('Добавить', self)
+        action.triggered.connect(self.add_coffee)
+        self.menuBar.addAction(action)
+
+    def update_(self):
+        layout = QGridLayout()
         self.cards = QListWidget()
-        self.gridLayout.addWidget(self.cards)
+        layout.addWidget(self.cards)
+        data = get_all_base()
         if data:
             for line in data:
                 card = WidgetCoffeeCard(*line)
-                card.button_edit.clicked.connect(lambda state,  data=line: self.click(data))
+                card.button_edit.clicked.connect(lambda state, id_=line[0]: self.edit_coffe(id_))
                 #
                 list_card = QListWidgetItem(self.cards)
                 list_card.setSizeHint(card.sizeHint())
                 self.cards.addItem(list_card)
                 self.cards.setItemWidget(list_card, card)
+        self.gridLayout.addLayout(layout, 0, 0)
 
-    def click(self, data: list) -> None:
-        dialog = AddEditCoffee()
-        dialog.exec_()
+    def edit_coffe(self, id_: int) -> None:
+        dialog = AddEditCoffee(*get_base_data("""SELECT * FROM coffee WHERE id = ?""", (id_,))[0], False)
+        if dialog.exec_() == QDialog.Accepted:
+            self.update_()
+        dialog.deleteLater()
+
+    def add_coffee(self):
+        dialog = AddEditCoffee(-1, 1, 1, 1, '', 1, 1)
+        if dialog.exec_() == QDialog.Accepted:
+            self.update_()
+        dialog.deleteLater()
 
 
 if __name__ == '__main__':
