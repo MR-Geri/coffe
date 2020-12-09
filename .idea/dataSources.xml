@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="data" uuid="df81157a-f856-42cb-b2cf-b6ac551a60c7">
+    <data-source source="LOCAL" name="coffee" uuid="cd7f455e-13e9-4c7a-9087-fea2f122d91e">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:D:\PycharmProjects\coffe\data\data.sqlite</jdbc-url>
+      <jdbc-url>jdbc:sqlite:D:\PycharmProjects\coffe\data\coffee.sqlite</jdbc-url>
       <libraries>
         <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.31.1/sqlite-jdbc-3.31.1.jar</url>
