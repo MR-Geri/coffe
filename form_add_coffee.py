@@ -35,7 +35,7 @@ class AddEditCoffee(QDialog):
         self.ui.cancel.clicked.connect(self.close)
 
     def addBase(self):
-        with get_base('data/data.sqlite', True) as base:
+        with get_base('data/coffee.sqlite', True) as base:
             base.execute("""INSERT INTO coffee (id, variety, degree_roasting, condition, description, price, volume)
                                 VALUES ((SELECT id FROM coffee ORDER BY id DESC LIMIT 1) + 1, ?, ?, ?, ?, ?, ?)""",
                          (self.ui.variety.currentIndex() + 1,
@@ -48,7 +48,7 @@ class AddEditCoffee(QDialog):
         self.accept()
 
     def editBase(self):
-        with get_base('data/data.sqlite', True) as base:
+        with get_base('data/coffee.sqlite', True) as base:
             base.execute("""UPDATE coffee SET variety = ?, degree_roasting = ?, 
             condition = ?, description = ?, price = ?, volume = ? WHERE id = ?""",
                          (self.ui.variety.currentIndex() + 1,
