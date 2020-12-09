@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import *
 
 
 def get_base():
-    con = sqlite3.connect('data.sqlite')
+    con = sqlite3.connect('coffee.sqlite')
     sql = con.cursor()
     result = sql.execute("""SELECT cof.id, v.title, d.title, c.title, cof.description, cof.price, cof.volume FROM 
     coffee cof, conditions c, degree_roasting d, varietys v 
